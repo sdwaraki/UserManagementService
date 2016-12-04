@@ -26,23 +26,6 @@ import com.user.service.UserServiceImpl;
 @Path("/userdetails")
 public class UserController {
 
-	static Map<String, User> userMap = new HashMap<String, User>();
-	static {
-		User user1 = new User("U001", "Sumanth", new Date(new Long("660072286000")));
-		User user2 = new User("U002", "Sam", new Date(System.currentTimeMillis()));
-		userMap.put(user1.getId(), user1);
-		userMap.put(user2.getId(), user2);
-	}
-
-	@GET
-	@Path("/names")
-	@Produces(MediaType.APPLICATION_JSON)
-	public Response getUserNames() {
-		List<String> userNames = new ArrayList<String>();
-		userMap.forEach((k, v) -> userNames.add(v.getName()));
-		return Response.status(200).entity(userNames).build();
-	}
-
 	@POST
 	@Path("/adduser")
 	@Consumes("application/x-www-form-urlencoded")
